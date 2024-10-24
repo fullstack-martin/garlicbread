@@ -10,7 +10,9 @@ const Page: React.FC = () => {
   const [apikey, setApikey] = useState<string>("");
 
   useEffect(() => {
-    setApikey(decipher(readAPIKeycookie()!));
+    if (readAPIKeycookie()) {
+      setApikey(decipher(readAPIKeycookie()!));
+    }
   }, []);
 
   return <Box>{` apikey: ${apikey} `}</Box>;
