@@ -1,12 +1,19 @@
 "use client";
-import React from "react";
+import { readAPIKeycookie, saveAPIKeycookie } from "@/lib/cookie";
+import { cypher, decipher } from "@/lib/crypto";
+import React, { useEffect, useState } from "react";
+import { Box } from "@mui/material";
 
-import cookie from "js-cookie"
-
-cookie.set("apikey", "siuuuuu" )
+saveAPIKeycookie(cypher("siuuu"));
 
 const Page: React.FC = () => {
-  return <></>;
+  const [apikey, setApikey] = useState<string>("");
+
+  useEffect(() => {
+    setApikey(decipher(readAPIKeycookie()!));
+  }, []);
+
+  return <Box>{` apikey: ${apikey} `}</Box>;
 };
 
 export default Page;

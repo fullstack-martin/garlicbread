@@ -1,4 +1,2 @@
 securely implement APIKey cookie handling
     capture cookie in a form
-    cypher cookie with AES simetric server key
-    write to browser
